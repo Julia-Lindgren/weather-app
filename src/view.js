@@ -15,8 +15,8 @@ function displayCurrentLocationData(locationObj) {
   console.log('jo');
 
   const location = locationObj.location.name;
-  const country = locationObj.location.country;
-  const date = locationObj.forecast.forecastday[0].date;
+  const { country } = locationObj.location;
+  const { date } = locationObj.forecast.forecastday[0];
 
   const conditionIcon = locationObj.current.condition.icon;
   const conditionText = locationObj.current.condition.text;
@@ -25,8 +25,8 @@ function displayCurrentLocationData(locationObj) {
 
   const wind = locationObj.current.wind_kph;
   const precip = locationObj.current.precip_mm;
-  const humidity = locationObj.current.humidity;
-  const uv = locationObj.current.uv;
+  const { humidity } = locationObj.current;
+  const { uv } = locationObj.current;
 
   locationElement.innerText = location;
   countryElement.innerText = country;

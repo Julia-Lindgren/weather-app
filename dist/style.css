@@ -6,7 +6,7 @@
     --white: #FFFFFF;
     --black: #252A32;
     color: var(--white);
-    background-color: var(--mediumBlue);
+    background-color: var(--darkBlue);
     font-family:Arial, Helvetica, sans-serif;
     
 }
@@ -57,14 +57,18 @@ header {
 }
 
 .currentContainer {
-    height: max(55vh, 300px);
+    height: max(55vh, 450px);
 }
 
 .infoContainer {
     display: flex;
     flex-direction: column;
     align-items: center;
+    height: 100%;
     gap: max(20px, 5vh);
+    padding-top: max(30px, 5vh);
+    justify-content:flex-start;
+    /* background-color: #d6d0b7; */
 }
 
 .headerInfo {
@@ -74,30 +78,50 @@ header {
     /* justify-content: center; */
 }
 
+#location,#currentTemp {
+    font-size: 3rem;
+    text-align: center;
+}
+
+#country, #conditionText, .secondaryInfo {
+    font-size: 1.5rem;
+}
+
+#date, #feelsLikeTemp {
+    font-size: 1.25rem;
+}
+
 .mainInfo {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: repeat(3, 1fr);
-    
+    grid-template-rows: repeat(1, 1fr); 
+    column-gap: max(5vh, 10px);
+}
+
+.mainInfoText {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+    gap: max(20px,2vh);
 }
 
 #conditionIcon {
-    grid-column: span 1;
-    grid-row: span 3;
     height: 100%;
-    width: 150px;
-
+    max-width: max(10vw, 200px);
 }
 
 .secondaryInfo {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     grid-template-rows: repeat(2, 1fr);
-}
+    column-gap: max(5vh, 10px);
+    row-gap:  max(2vh, 15px);
+}    
 
 .forecastContainer {
     height: max(30vh, 200px);
-    background-color: var(--lightBlue);
+    background-color: var(--mediumBlue);
 }
 
 
