@@ -1,14 +1,20 @@
 /* eslint-disable prefer-destructuring */
-function extractData(locationObj) {
-  const name = data.location.name;
-  const country = data.location.country;
 
-  console.log(name, country);
-}
+/* Extract the neccesary location data from the fetched object
+Expects a js object */
+// function extractData(data) {
+//   const name = data.location.name;
+//   const country = data.location.country;
 
-async function getData(location) {
-  console.log(location);
-  const url = `https://api.weatherapi.com/v1/current.json?key=866893fd6b4045d4925130358233010&q=${location}`;
+//   console.log(name, country);
+//   return name;
+// }
+
+// Get the forecast for todays weather in a specified location using the weather api
+// Note: Free version only gets 3 days forecast, hence we only do 3 days
+async function getCurrentData(location) {
+  // console.log(location);
+  const url = `https://api.weatherapi.com/v1/forecast.json?key=866893fd6b4045d4925130358233010&q=${location}&days=3`;
   try {
     const response = await fetch(url, { mode: 'cors' });
     if (!response.ok) {
@@ -16,12 +22,14 @@ async function getData(location) {
       throw new Error(message);
     }
     const locationObj = await response.json();
-    const data = extractData(locationObj);
-    return data;
+    console.log(locationObj);
+    // const data = extractData(locationObj);
+    return locationObj;
   } catch (error) {
     console.log(error.message);
+    console.log("couldnt find place");
   }
   return null;
 }
 
-export default getData;
+export default getCurrentData;

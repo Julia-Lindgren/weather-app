@@ -32,7 +32,7 @@ header {
 
 }
 
-.searchForm {
+#searchForm {
     display: flex;
     flex-direction: row;
     height: 2.5rem;
@@ -45,7 +45,7 @@ header {
     font-size: 1rem;
 }
 
-#search {
+#searchButton {
     border-top-right-radius: 20px;
     border-bottom-right-radius: 20px;
     width: 5rem;
@@ -56,8 +56,43 @@ header {
 
 }
 
-.todayContainer {
+.currentContainer {
     height: max(55vh, 300px);
+}
+
+.infoContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: max(20px, 5vh);
+}
+
+.headerInfo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* justify-content: center; */
+}
+
+.mainInfo {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    
+}
+
+#conditionIcon {
+    grid-column: span 1;
+    grid-row: span 3;
+    height: 100%;
+    width: 150px;
+
+}
+
+.secondaryInfo {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, 1fr);
 }
 
 .forecastContainer {
@@ -74,7 +109,7 @@ header {
     #searchField {
         width: 8rem;
     }
-    #search {
+    #searchButton {
         width: 4rem;
         font-size: 0.9rem;
     }
