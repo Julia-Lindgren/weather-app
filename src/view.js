@@ -11,7 +11,7 @@ const humidityElement = document.getElementById('humidity');
 const uvElement = document.getElementById('uv');
 
 //TODO: Create switch to check whether to display C/F, mm/in, mph/kph
-function displayCurrentLocationData(locationObj) {
+export function displayCurrentLocationData(locationObj) {
   console.log('jo');
 
   const location = locationObj.location.name;
@@ -41,4 +41,23 @@ function displayCurrentLocationData(locationObj) {
   uvElement.innerText = `UV: ${uv}`;
 }
 
-export default displayCurrentLocationData;
+export function displayFutureForecastData(locationObj) {
+  const forecastContainer = document.getElementsByClassName('forecastContainer')[0];
+  locationObj.forecast.forecastday.forEach((forecastDay) => {
+    const dayDiv = document.createElement('div');
+    dayDiv.classList.add('dayDisplay');
+    const header = document.createElement('div');
+    header.innerText = forecastDay.date;
+    const icon = document.createElement('img');
+    icon.src = forecastDay.day.condition.icon;
+    const temp = document.createElement('div');
+    temp.innerText = `${forecastDay.day.mintemp_c}° / ${forecastDay.day.maxtemp_c}°`;
+    const precip = document.createElement('div');
+    precip.innerText = `Precip: ${forecastDay.day.totalprecip_mm}mm`;
+    dayDiv.appendChild(header);
+    dayDiv.appendChild(icon);
+    dayDiv.appendChild(temp);
+    dayDiv.appendChild(precip);
+    forecastContainer.appendChild(dayDiv);
+  });
+}
