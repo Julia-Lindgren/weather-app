@@ -10,10 +10,10 @@ const precipElement = document.getElementById('precip');
 const humidityElement = document.getElementById('humidity');
 const uvElement = document.getElementById('uv');
 
-//TODO: Create switch to check whether to display C/F, mm/in, mph/kph
-export function displayCurrentLocationData(locationObj) {
-  console.log('jo');
+let locationObject;
 
+export function displayCurrentLocationData(locationObj) {
+  locationObject = locationObj;
   const location = locationObj.location.name;
   const { country } = locationObj.location;
   const { date } = locationObj.forecast.forecastday[0];
@@ -43,6 +43,7 @@ export function displayCurrentLocationData(locationObj) {
 
 export function displayFutureForecastData(locationObj) {
   const forecastContainer = document.getElementsByClassName('forecastContainer')[0];
+  forecastContainer.innerHTML = '';
   locationObj.forecast.forecastday.forEach((forecastDay) => {
     const dayDiv = document.createElement('div');
     dayDiv.classList.add('dayDisplay');
@@ -51,13 +52,59 @@ export function displayFutureForecastData(locationObj) {
     const icon = document.createElement('img');
     icon.src = forecastDay.day.condition.icon;
     const temp = document.createElement('div');
+    temp.setAttribute('id', `temp${forecastDay.date}`);
     temp.innerText = `${forecastDay.day.mintemp_c}° / ${forecastDay.day.maxtemp_c}°`;
     const precip = document.createElement('div');
+    precip.setAttribute('id', `precip${forecastDay.date}`);
     precip.innerText = `Precip: ${forecastDay.day.totalprecip_mm}mm`;
     dayDiv.appendChild(header);
     dayDiv.appendChild(icon);
     dayDiv.appendChild(temp);
     dayDiv.appendChild(precip);
     forecastContainer.appendChild(dayDiv);
+  });
+}
+
+export function displayMetricUnits() {
+  if (typeof locationObject === 'undefined') {
+    return;
+  }
+
+  const currentTemp = locationObject.current.temp_c;
+  const feelsLikeTemp = locationObject.current.feelslike_c;
+  const wind = locationObject.current.wind_kph;
+  const precip = locationObject.current.precip_mm;
+  currentTempElement.innerText = `${currentTemp}°C`;
+  feelsLikeTempElement.innerText = `Feels like: ${feelsLikeTemp}°C`;
+  windElement.innerText = `Wind: ${wind}kph`;
+  precipElement.innerText = `Precip: ${precip}mm`;
+
+  locationObject.forecast.forecastday.forEach((forecastDay) => {
+    const futurePrecip = document.getElementById(`precip${forecastDay.date}`);
+    const temp = document.getElementById(`temp${forecastDay.date}`);
+    futurePrecip.innerText = `Precip: ${forecastDay.day.totalprecip_mm}mm`;
+    temp.innerText = `${forecastDay.day.mintemp_c}° / ${forecastDay.day.maxtemp_c}°`;
+  });
+}
+
+export function displayImperialUnits() {
+  if (typeof locationObject === 'undefined') {
+    return;
+  }
+  const currentTemp = locationObject.current.temp_f;
+  const feelsLikeTemp = locationObject.current.feelslike_f;
+  const wind = locationObject.current.wind_mph;
+  const precip = locationObject.current.precip_in;
+
+  currentTempElement.innerText = `${currentTemp}°F`;
+  feelsLikeTempElement.innerText = `Feels like: ${feelsLikeTemp}°F`;
+  windElement.innerText = `Wind: ${wind}mph`;
+  precipElement.innerText = `Precip: ${precip}in`;
+
+  locationObject.forecast.forecastday.forEach((forecastDay) => {
+    const futurePrecip = document.getElementById(`precip${forecastDay.date}`);
+    const temp = document.getElementById(`temp${forecastDay.date}`);
+    futurePrecip.innerText = `Precip: ${forecastDay.day.totalprecip_in}in`;
+    temp.innerText = `${forecastDay.day.mintemp_f}° / ${forecastDay.day.maxtemp_f}°`;
   });
 }

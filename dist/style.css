@@ -44,6 +44,9 @@ header {
     width: 20rem;
     font-size: 1rem;
 }
+button:hover {
+    cursor:pointer;
+}
 
 #searchButton {
     border-top-right-radius: 20px;
@@ -53,7 +56,19 @@ header {
     font-weight: 600;
     background-color: var(--yellow);
     color: var(--darkBlue);
+}
 
+.unitButton {
+    width: 5rem;
+    height: 2.5rem;
+    border-radius: 20px;
+    font-size: 1.25rem;
+    color: var(--darkBlue);
+}
+
+.selectedButton {
+    background-color: var(--yellow);
+    font-weight: 600;
 }
 
 .currentContainer {
