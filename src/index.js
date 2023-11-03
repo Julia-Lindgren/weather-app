@@ -1,5 +1,7 @@
 import getCurrentData from './weatherApi';
-import { displayCurrentLocationData, displayFutureForecastData, displayImperialUnits, displayMetricUnits } from './view';
+import {
+  displayCurrentLocationData, displayFutureForecastData, displayImperialUnits, displayMetricUnits,
+} from './view';
 
 const searchField = document.getElementById('searchField');
 const searchForm = document.getElementById('searchForm');
@@ -37,3 +39,5 @@ imperialButton.addEventListener('click', () => {
   imperialButton.classList.add('selectedButton');
   metricButton.classList.remove('selectedButton');
 });
+
+submitSearch();

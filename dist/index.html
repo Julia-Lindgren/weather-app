@@ -7,14 +7,14 @@
     <link rel="icon" href="favicon.png" />
     <link rel="stylesheet" href="style.css">
     <script src="main.js" defer></script>
-    <title>Hello, world!</title>
+    <title>Weather App</title>
     
   </head>
   <body>
     <header>
-        <h3 class="Header">Weather</h3>
+        <h3 class="Header">Forecast</h3>
         <form id="searchForm">
-            <input type="search" id="searchField" name="searchField" placeholder="input city name" value="">
+            <input type="search" id="searchField" name="searchField" placeholder="input city name" value="London">
             <button id="searchButton" type="submit">Search</button>
         </form>
         <div class="toggleContainer">
@@ -26,23 +26,23 @@
         <div class="currentContainer">
           <div class ="infoContainer">
             <div class="headerInfo">
-              <span id="location">London</span>
-              <span id="country">United Kingdom</span>
-              <span id="date">???</span>
+              <span id="location"></span>
+              <span id="country"></span>
+              <span id="date"></span>
             </div>
             <div class="mainInfo">
-              <img id="conditionIcon" src="potato.png" alt="Current weather">
+              <img id="conditionIcon" src="" alt="Current weather">
               <div class="mainInfoText">
-                <div id="conditionText">Partly cloudy</div>
-                <div id="currentTemp">5°C</div>
-                <div id="feelsLikeTemp">Feels like: 4.5°C</div>
+                <div id="conditionText"></div>
+                <div id="currentTemp"></div>
+                <div id="feelsLikeTemp"></div>
               </div>
             </div>
             <div class="secondaryInfo">
-              <div id="wind">Wind: 46.1kph</div>
-              <div id="precip">Precip: 0.02mm</div>
-              <div id="humidity">Humidity: 70%</div>
-              <div id="uv">UV: 2</div>
+              <div id="wind"></div>
+              <div id="precip"></div>
+              <div id="humidity"></div>
+              <div id="uv"></div>
             </div>
           </div>
         </div>

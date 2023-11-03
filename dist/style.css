@@ -43,6 +43,7 @@ header {
     border-bottom-left-radius: 20px;
     width: 20rem;
     font-size: 1rem;
+    padding-left: 25px;
 }
 button:hover {
     cursor:pointer;
@@ -139,8 +140,9 @@ button:hover {
     flex-direction: row;
     justify-content: space-evenly;
     gap: 5px;
-    height: max(25vh, 200px);
-    /* background-color: var(--mediumBlue); */
+    height: max(30vh, 200px);
+    padding-top: 10px;
+    background-color: var(--mediumBlue);
 }
 
 .dayDisplay {
@@ -149,10 +151,10 @@ button:hover {
     align-items: center;
     justify-content: space-around;
 
-    border-radius: 20px;
-    background-color: #2A5282;
+    border-radius: 15px;
+    /* background-color: #2A5282; */
     width: max(15%, 200px);
-    margin-bottom: 20px;
+    /* padding: 20px; */
     font-size: 1.25rem;
 }
 
@@ -168,7 +170,7 @@ button:hover {
     #searchField {
         width: 8rem;
     }
-    #searchButton {
+    #searchButton, #metric, #imperial {
         width: 4rem;
         font-size: 0.9rem;
     }
@@ -179,5 +181,6 @@ button:hover {
         align-items: center;
         justify-content: flex-start;
         height: max(25vh, 500px);
+        gap: 30px;
     }
 }
